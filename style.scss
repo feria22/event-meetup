@@ -84,10 +84,8 @@ form {
   }
 }
 header {
-//   position: relative;
   width: 100%;
   max-height: 770px;
-  /*min-height:500px;*/
   background: $bgDark;
   
       padding-top: 45px;
@@ -118,14 +116,11 @@ header {
     
     
     #time_for_event {
-      /*width: 970px;
-        height: 196px;*/
       border: 2px solid $bgBtn;
       border-radius: 18px;
       margin-top: 118px;
       margin-bottom: 199px;
       @include font-face($fontThin, $time_for_event, $fontColorLight);
-    
       line-height: 1;
       text-align: center;
       text-transform: uppercase;
