@@ -34,21 +34,15 @@ function Time() {
 setInterval(Time,1000);
 
 
-function showTable(){
-	let clickTable=document.querySelectorAll('table .clickable .fa');
-	for(let i=0;i<clickTable.length;i++){
-		let j=i+1;
-		document.querySelector('#group-of-rows-'+j).style.display='none';
-
-		if (i%2==0){
-			document.querySelector('[aria-controls="group-of-rows-'+j+'"]').classList+=' tbldDark';
-			document.querySelector('#group-of-rows-'+j).classList+=' tbldDark';
-	
-		}
-		clickTable[i].onclick=function (){
-		if(document.querySelector('#group-of-rows-'+(i+1)).style.display=='table-row')document.querySelector('#group-of-rows-'+(i+1)).style.display='none';
-		else document.querySelector('#group-of-rows-'+(i+1)).style.display='table-row';
-		}
+let clickTable=document.querySelectorAll('table .clickable .fa');
+for(let i=0;i<clickTable.length;i++){
+	let j=i+1;
+	if (i%2==0){
+		document.querySelector(`[aria-controls="group-of-rows-${j}"]`).classList+=' tbldDark';
+		document.querySelector('#group-of-rows-'+j).classList+=' tbldDark';
+	}
+	document.querySelector(`#group-of-rows-${j}`).classList+=' displayNone';
+	clickTable[i].onclick=function (){
+	document.querySelector(`#group-of-rows-${j}`).classList.toggle('displayNone');
 	}
 }
-showTable();
