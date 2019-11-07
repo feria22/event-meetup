@@ -34,16 +34,12 @@ function Time() {
 setInterval(Time,1000);
 
 
-function showTable(){
 	let clickTable=document.querySelectorAll('table .clickable .fa');
 	for(let i=0;i<clickTable.length;i++){
-		document.querySelector('#group-of-rows-'+(i+1)).style.display='none';
+		let j=i+1;
+		document.querySelector(`#group-of-rows-${j}`).classList+=' displayNone';
 		clickTable[i].onclick=function (){
-		if(document.querySelector('#group-of-rows-'+(i+1)).style.display=='table-row'){
-		document.querySelector('#group-of-rows-'+(i+1)).style.display='none';
-		}
-		else document.querySelector('#group-of-rows-'+(i+1)).style.display='table-row';
+		document.querySelector(`#group-of-rows-${j}`).classList.toggle('displayNone')
 	}
 	}
-}
-showTable();
+
