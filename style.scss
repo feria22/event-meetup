@@ -285,7 +285,10 @@ header {
     font-size: 15px;
   }
 }
-
+.invalid{
+  text-transform: none;
+  background-color: #ef9a9a;
+}
 .description {
   margin-top: 125px;
   margin-bottom: 83px;
@@ -674,13 +677,13 @@ $logoSpeakers:296px;
       // left: 22px;
       order: 0;
       flex: 0 1 auto;
-      align-self: auto;
-      #inputEmail1 {
+      align-self: auto; 
+      #inputKonatktEmail {
         padding: 0px 17px 0;
         min-width: 399px;
         width: 100%;
       }
-      #inputText {
+      #inputKontaktText {
         padding: 13px 20px 0;
         margin-top: 10px;
         min-height: 250px;
@@ -920,10 +923,10 @@ span {
         background-color: $bgLight;
  
         div:nth-child(2) {
-          #inputEmail1 {
+          #inputKonatktEmail {
             min-width: 200px;
           }
-          #inputText {
+          #inputKontaktText {
             min-width: 200px;
           }
           button {

@@ -46,3 +46,4 @@ for(let i=0;i<clickTable.length;i++){
 	document.querySelector(`#group-of-rows-${j}`).classList.toggle('displayNone');
 	}
 }
+
