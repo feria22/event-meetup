@@ -44,9 +44,6 @@ p {
 .pCenter {
   text-align: center; }
 
-.displayNone {
-  display: none; }
-
 form input,
 form textarea {
   font-family: "Roboto", sans-serif;
@@ -314,6 +311,7 @@ header {
   #eventDetails table thead {
     background-color: #a3cc40;
     border-spacing: 0;
+    border-radius: 15px 15px 0 0;
     font-family: "Roboto Black", sans-serif;
     font-size: 30px;
     color: #ffffff;
@@ -472,24 +470,22 @@ header {
   #pastEvents .container .pastEventsImg {
     margin-top: 85px;
     width: 100%;
+    display: inline-block;
     clear: both; }
     #pastEvents .container .pastEventsImg div {
       display: inline-block;
       margin: 0 !important; }
     #pastEvents .container .pastEventsImg div:first-child {
-      background-color: red;
       float: left;
       height: 416px;
       overflow: hidden;
       width: 51.28%; }
     #pastEvents .container .pastEventsImg div:nth-child(2) {
-      background-color: green;
       float: right;
       height: 416px;
       width: 48.72%;
       overflow: hidden; }
     #pastEvents .container .pastEventsImg div:nth-child(3) {
-      background-color: yellow;
       float: left;
       height: 366px;
       overflow: hidden;
@@ -505,9 +501,11 @@ header {
       max-height: 110%;
       min-width: 100%; }
 #pastEvents button {
-  margin: 0;
+  clear: both;
+  margin: 0 auto;
   margin-top: 99px;
-  background-color: #373737; }
+  background-color: #373737;
+  display: block; }
 
 #contact {
   position: relative;
@@ -530,7 +528,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
-  #contact .contactDetails {
+  #contact #contactDetails {
     z-index: 2;
     min-height: 530px;
     max-width: 970px;
@@ -554,7 +552,7 @@ header {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-    #contact .contactDetails div:first-child {
+    #contact #contactDetails div:first-child {
       -webkit-box-ordinal-group: 1;
           -ms-flex-order: 0;
               order: 0;
@@ -563,10 +561,10 @@ header {
               flex: 0 1 auto;
       -ms-flex-item-align: center;
           align-self: center; }
-    #contact .contactDetails .adres {
+    #contact #contactDetails .adres {
       text-align: center;
       height: 336px; }
-      #contact .contactDetails .adres p {
+      #contact #contactDetails .adres p {
         margin-top: 43px;
         margin-bottom: 28px;
         padding: 0 20px;
@@ -575,7 +573,7 @@ header {
         font-size: 18px;
         color: #454444;
         line-height: 1.2; }
-    #contact .contactDetails div:nth-child(2) {
+    #contact #contactDetails div:nth-child(2) {
       -webkit-box-ordinal-group: 1;
           -ms-flex-order: 0;
               order: 0;
@@ -584,17 +582,17 @@ header {
               flex: 0 1 auto;
       -ms-flex-item-align: auto;
           align-self: auto; }
-      #contact .contactDetails div:nth-child(2) #inputKonatktEmail {
+      #contact #contactDetails div:nth-child(2) #inputKonatktEmail {
         padding: 0px 17px 0;
         min-width: 399px;
         width: 100%; }
-      #contact .contactDetails div:nth-child(2) #inputKontaktText {
+      #contact #contactDetails div:nth-child(2) #inputKontaktText {
         padding: 13px 20px 0;
         margin-top: 10px;
         min-height: 250px;
         min-width: 399px;
         width: 100%; }
-      #contact .contactDetails div:nth-child(2) button {
+      #contact #contactDetails div:nth-child(2) button {
         min-width: 399px;
         margin: 7px 0px 0px 1px;
         width: 100%;
@@ -753,15 +751,15 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
-    #contact .contactDetails {
+    #contact #contactDetails {
       z-index: 2;
       position: absolute;
       background-color: #ffffff; }
-      #contact .contactDetails div:nth-child(2) #inputKonatktEmail {
+      #contact #contactDetails div:nth-child(2) #inputKonatktEmail {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) #inputKontaktText {
+      #contact #contactDetails div:nth-child(2) #inputKontaktText {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) button {
+      #contact #contactDetails div:nth-child(2) button {
         min-width: 200px; }
 
   .goUp {
@@ -910,15 +908,15 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
-    #contact .contactDetails {
+    #contact #contactDetails {
       z-index: 2;
       position: absolute;
       background-color: #ffffff; }
-      #contact .contactDetails div:nth-child(2) #inputKonatktEmail {
+      #contact #contactDetails div:nth-child(2) #inputKonatktEmail {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) #inputKontaktText {
+      #contact #contactDetails div:nth-child(2) #inputKontaktText {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) button {
+      #contact #contactDetails div:nth-child(2) button {
         min-width: 200px; }
 
   .goUp {
@@ -1067,15 +1065,15 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
-    #contact .contactDetails {
+    #contact #contactDetails {
       z-index: 2;
       position: absolute;
       background-color: #ffffff; }
-      #contact .contactDetails div:nth-child(2) #inputKonatktEmail {
+      #contact #contactDetails div:nth-child(2) #inputKonatktEmail {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) #inputKontaktText {
+      #contact #contactDetails div:nth-child(2) #inputKontaktText {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) button {
+      #contact #contactDetails div:nth-child(2) button {
         min-width: 200px; }
 
   .goUp {
@@ -1188,15 +1186,15 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
-    #contact .contactDetails {
+    #contact #contactDetails {
       z-index: 2;
       position: absolute;
       background-color: #ffffff; }
-      #contact .contactDetails div:nth-child(2) #inputKonatktEmail {
+      #contact #contactDetails div:nth-child(2) #inputKonatktEmail {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) #inputKontaktText {
+      #contact #contactDetails div:nth-child(2) #inputKontaktText {
         min-width: 200px; }
-      #contact .contactDetails div:nth-child(2) button {
+      #contact #contactDetails div:nth-child(2) button {
         min-width: 200px; }
 
   .goUp {
@@ -1205,5 +1203,7 @@ span i:last-child {
 @media (min-width: 1200px) {
   .container {
     max-width: 1170px; } }
+.displayNone {
+  display: none !important; }
 
 /*# sourceMappingURL=style.css.map */

@@ -62,9 +62,7 @@ p {
 .pCenter {
   text-align: center;
 }
-.displayNone{
-  display: none;
-}
+
 form {
   input,
   textarea {
@@ -363,6 +361,7 @@ header {
     thead {
       background-color: $bgTblTh;
       border-spacing: 0;
+      border-radius: 15px 15px 0 0;
       @include font-face($fontBlack, 30px, $bgLight);
       th {
         padding: 0;
@@ -573,20 +572,20 @@ $logoSpeakers:296px;
       // right: -70px;
       // width: 100%;
       width: 100%;
-
+      display: inline-block;
       div {
         display: inline-block;
         margin: 0 !important;
       }
       div:first-child {
-        background-color: red;
+        // background-color: red;
         float: left;
         height: 416px;
         overflow: hidden;
         width: 51.28%;
       }
       div:nth-child(2) {
-        background-color: green;
+        // background-color: green;
         float: right;
         height: 416px;
         width: 48.72%;
@@ -596,7 +595,7 @@ $logoSpeakers:296px;
         // }
       }
       div:nth-child(3) {
-        background-color: yellow;
+        // background-color: yellow;
         float: left;
         height: 366px;
         overflow: hidden;
@@ -611,9 +610,7 @@ $logoSpeakers:296px;
         height: 366px;
         overflow: hidden;
         width: 57.26%;
-        // img{
-        //     width: 670px;
-        // }
+        // clear: both;
       }
       img {
         min-height: 100%;
@@ -622,12 +619,15 @@ $logoSpeakers:296px;
       }
       clear: both;
     }
+    
   }
 
   button {
-    margin: 0;
+    clear: both;
+    margin: 0 auto;
     margin-top: 99px;
     background-color: #373737;
+    display: block;
   }
 }
 #contact {
@@ -640,7 +640,7 @@ $logoSpeakers:296px;
   justify-content: center;
   align-content: center;
   align-items: center;
-  .contactDetails {
+  #contactDetails {
     z-index: 2;
     min-height: 530px;
     max-width: 970px;
@@ -917,7 +917,7 @@ span {
     }
    #contact {
       margin-top: 92px;
-      .contactDetails {
+      #contactDetails {
         z-index: 2;
         position: absolute;
         background-color: $bgLight;
@@ -1027,4 +1027,7 @@ span {
   .container {
     max-width: 1170px;
   }
+}
+.displayNone{
+  display: none!important;
 }
