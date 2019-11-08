@@ -47,3 +47,8 @@ for(let i=0;i<clickTable.length;i++){
 	}
 }
 
+let contactWindow=document.querySelector('#contactDetails');
+let showMap=document.querySelector('#viewMap');
+showMap.onclick=function(){
+	contactWindow.classList.add('displayNone')
+}
