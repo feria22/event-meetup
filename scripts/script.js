@@ -32,7 +32,36 @@ function Time() {
 };
 
 setInterval(Time,1000);
-
+let pastEvetsImgArray=[
+	"https://cdn.pixabay.com/photo/2017/07/21/23/57/concert-2527495_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2016/09/17/21/47/audience-1677028_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2016/04/04/03/03/event-1306079_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2015/09/18/11/38/audience-945449_960_720.jpg",
+	// "https://cdn.pixabay.com/photo/2015/07/30/17/24/audience-868074__740.jpg",
+	"https://cdn.pixabay.com/photo/2015/07/30/17/24/audience-868074_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2016/11/29/13/20/balloons-1869790_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2013/12/12/20/01/fireworks-227383_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2016/03/27/18/53/drinks-1283608_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2016/01/19/17/18/fairground-1149626_960_720.jpg",
+	"https://cdn.pixabay.com/photo/2015/07/02/10/16/circus-828680_960_720.jpg",
+];
+document.querySelectorAll('.pastEventsImg').forEach(function(elem){
+	genPastImg();
+})
+function genPastImg(i=1){
+	let j;
+	for(i;i<=4;i++){
+		j=Math.floor(Math.random()*(pastEvetsImgArray.length-0)+0);
+		console.log(j);
+		let img=document.createElement("div");
+		img.classList.add(`pastEventsImgN${i}`);
+		img.innerHTML=`<img src="${pastEvetsImgArray[j]}" alt="event">`;
+		document.querySelectorAll('.pastEventsImg')[0].appendChild(img);
+	}
+}
+document.querySelector('#viewMore').onclick=function(){
+	genPastImg();
+}
 let clickTable=document.querySelectorAll('table .clickable .fa');
 for(let i=0;i<clickTable.length;i++){
 	let j=i+1;

@@ -487,22 +487,22 @@ header {
     #pastEvents .container .pastEventsImg div {
       display: inline-block;
       margin: 0 !important; }
-    #pastEvents .container .pastEventsImg div:first-child {
+    #pastEvents .container .pastEventsImg .pastEventsImgN1 {
       float: left;
       height: 416px;
       overflow: hidden;
       width: 51.28%; }
-    #pastEvents .container .pastEventsImg div:nth-child(2) {
+    #pastEvents .container .pastEventsImg .pastEventsImgN2 {
       float: right;
       height: 416px;
       width: 48.72%;
       overflow: hidden; }
-    #pastEvents .container .pastEventsImg div:nth-child(3) {
+    #pastEvents .container .pastEventsImg .pastEventsImgN3 {
       float: left;
       height: 366px;
       overflow: hidden;
       width: 42.74%; }
-    #pastEvents .container .pastEventsImg div:nth-child(4) {
+    #pastEvents .container .pastEventsImg .pastEventsImgN4 {
       background-color: blue;
       float: right;
       height: 366px;
