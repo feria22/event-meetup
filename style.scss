@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:100,300,400,700,900&display=swap");
 
+
 $bgDark: #4a454b;
 $bgLight: #ffffff;
 $bgBtn: #90d23d;
@@ -62,7 +63,18 @@ p {
 .pCenter {
   text-align: center;
 }
+.leaflet-popup-content{
+  background-color: $bgDark;
+  margin: 0 0 0 0;
+@include font-face($font, 16px, $bgLight);
+text-align: center;
+padding: 15px;
+border-radius: 12px;
+}
+.leaflet-popup-tip,.leaflet-popup-content-wrapper{
+  background-color: $bgDark;
 
+}
 form {
   input,
   textarea {
@@ -262,8 +274,6 @@ header {
     width: 87%;
     display: inline-block;
     margin: 0px 15px 22px 15px;
-    /* height: 55px; */
-    box-shadow: none;
     box-shadow: none;
   }
   button {
@@ -285,7 +295,8 @@ header {
 }
 .invalid{
   text-transform: none;
-  background-color: #ef9a9a;
+  background-color: rgba(236, 169, 169, 0.637);
+  color: #000000;
 }
 .description {
   margin-top: 125px;
@@ -328,11 +339,8 @@ header {
     position: relative;
     border-radius: 15px;
     left: 2px;
-    // border: none !important;
-    border-spacing: 0;
     @include font-face($fontRegular, 22px, $bgLight);
     background-color: $bgTblBody;
- 
     border-spacing: 0;
     border-collapse: collapse;
     margin-bottom: 22px;
@@ -640,6 +648,19 @@ $logoSpeakers:296px;
   justify-content: center;
   align-content: center;
   align-items: center;
+  #map{
+    // overflow:hidden;
+    width: 100%;
+    position: relative;
+    height: 660px;
+    z-index: -1;
+    // pointer-events: none;
+  }
+  #showContact{
+    position: absolute;
+    right: 0;
+    top:0;
+  }
   #contactDetails {
     z-index: 2;
     min-height: 530px;
@@ -750,6 +771,7 @@ span {
   $icon_eventWidth:150px,
   $headIcon4:static,
   $headIcon5:none,
+  $mapHeight:660px,
 
 ) {
   .no-padding{
@@ -766,6 +788,11 @@ span {
     // padding-right: 0;
     margin: 0!important;
     
+  }
+  .p90 {
+    p {
+      max-width: 100%;
+    }
   }
   .RWD{
     margin-top: 20px!important;
@@ -818,6 +845,7 @@ span {
     #signEvent {
         // min-height: 500px;
         position: $sign-position;
+        max-width: 100%;
     }
     .description {
         margin-top: 20px;
@@ -917,6 +945,9 @@ span {
     }
    #contact {
       margin-top: 92px;
+      #map{
+        height: $mapHeight;
+      }
       #contactDetails {
         z-index: 2;
         position: absolute;
@@ -1003,12 +1034,12 @@ span {
   @include media($sign-position:static,);
   @include nav-bar();
 }
-@media screen and (min-width: 577px) and (max-width: 769px) {
-  @include media($sign-position:static,$headIcon5:inline,$headIcon4:inline);
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  @include media($sign-position:static,$headIcon5:inline,$headIcon4:inline,$mapHeight:750px);
  @include nav-bar();
  
 }
-@media screen and (min-width: 770px) and (max-width: 992px) {
+@media screen and (min-width: 769px) and (max-width: 992px) {
   @include media(
     $headIcon4:none,
   );

@@ -44,6 +44,20 @@ p {
 .pCenter {
   text-align: center; }
 
+.leaflet-popup-content {
+  background-color: #4a454b;
+  margin: 0 0 0 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px; }
+
+.leaflet-popup-tip, .leaflet-popup-content-wrapper {
+  background-color: #4a454b; }
+
 form input,
 form textarea {
   font-family: "Roboto", sans-serif;
@@ -224,10 +238,8 @@ header {
     width: 87%;
     display: inline-block;
     margin: 0px 15px 22px 15px;
-    /* height: 55px; */
     -webkit-box-shadow: none;
-            box-shadow: none;
-    box-shadow: none; }
+            box-shadow: none; }
   #signEvent button {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -246,7 +258,8 @@ header {
 
 .invalid {
   text-transform: none;
-  background-color: #ef9a9a; }
+  background-color: rgba(236, 169, 169, 0.637);
+  color: #000000; }
 
 .description {
   margin-top: 125px;
@@ -286,7 +299,6 @@ header {
   position: relative;
   border-radius: 15px;
   left: 2px;
-  border-spacing: 0;
   font-family: "Roboto Regular", sans-serif;
   font-size: 22px;
   color: #ffffff;
@@ -528,6 +540,15 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
+  #contact #map {
+    width: 100%;
+    position: relative;
+    height: 660px;
+    z-index: -1; }
+  #contact #showContact {
+    position: absolute;
+    right: 0;
+    top: 0; }
   #contact #contactDetails {
     z-index: 2;
     min-height: 530px;
@@ -651,6 +672,9 @@ span i:last-child {
   .no-margin {
     margin: 0 !important; }
 
+  .p90 p {
+    max-width: 100%; }
+
   .RWD {
     margin-top: 20px !important; }
 
@@ -686,7 +710,8 @@ span i:last-child {
         display: none; }
 
   #signEvent {
-    position: static; }
+    position: static;
+    max-width: 100%; }
 
   .description {
     margin-top: 20px;
@@ -751,6 +776,8 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
+    #contact #map {
+      height: 660px; }
     #contact #contactDetails {
       z-index: 2;
       position: absolute;
@@ -801,12 +828,15 @@ span i:last-child {
     display: block;
     -webkit-transition-duration: 0.8s;
             transition-duration: 0.8s; } }
-@media screen and (min-width: 577px) and (max-width: 769px) {
+@media screen and (min-width: 577px) and (max-width: 768px) {
   .no-padding {
     padding: 0 !important; }
 
   .no-margin {
     margin: 0 !important; }
+
+  .p90 p {
+    max-width: 100%; }
 
   .RWD {
     margin-top: 20px !important; }
@@ -843,7 +873,8 @@ span i:last-child {
         display: inline; }
 
   #signEvent {
-    position: static; }
+    position: static;
+    max-width: 100%; }
 
   .description {
     margin-top: 20px;
@@ -908,6 +939,8 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
+    #contact #map {
+      height: 750px; }
     #contact #contactDetails {
       z-index: 2;
       position: absolute;
@@ -958,12 +991,15 @@ span i:last-child {
     display: block;
     -webkit-transition-duration: 0.8s;
             transition-duration: 0.8s; } }
-@media screen and (min-width: 770px) and (max-width: 992px) {
+@media screen and (min-width: 769px) and (max-width: 992px) {
   .no-padding {
     padding: 0 !important; }
 
   .no-margin {
     margin: 0 !important; }
+
+  .p90 p {
+    max-width: 100%; }
 
   .RWD {
     margin-top: 20px !important; }
@@ -1000,7 +1036,8 @@ span i:last-child {
         display: none; }
 
   #signEvent {
-    position: absolute; }
+    position: absolute;
+    max-width: 100%; }
 
   .description {
     margin-top: 20px;
@@ -1065,6 +1102,8 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
+    #contact #map {
+      height: 660px; }
     #contact #contactDetails {
       z-index: 2;
       position: absolute;
@@ -1085,6 +1124,9 @@ span i:last-child {
 
   .no-margin {
     margin: 0 !important; }
+
+  .p90 p {
+    max-width: 100%; }
 
   .RWD {
     margin-top: 20px !important; }
@@ -1121,7 +1163,8 @@ span i:last-child {
         display: none; }
 
   #signEvent {
-    position: absolute; }
+    position: absolute;
+    max-width: 100%; }
 
   .description {
     margin-top: 20px;
@@ -1186,6 +1229,8 @@ span i:last-child {
 
   #contact {
     margin-top: 92px; }
+    #contact #map {
+      height: 660px; }
     #contact #contactDetails {
       z-index: 2;
       position: absolute;

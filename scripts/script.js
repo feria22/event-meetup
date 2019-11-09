@@ -4,7 +4,7 @@ var date = new Date();
 var timeend = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
 
-window.onload = () => Time();
+window.onload = () =>{ Time();};
 window.onload = () => {
 	document.getElementById("time_today").insertAdjacentHTML("afterend", ":");
 	document.getElementById("time_thour").insertAdjacentHTML("afterend", ":");
@@ -33,7 +33,6 @@ function Time() {
 
 setInterval(Time,1000);
 
-
 let clickTable=document.querySelectorAll('table .clickable .fa');
 for(let i=0;i<clickTable.length;i++){
 	let j=i+1;
@@ -46,9 +45,28 @@ for(let i=0;i<clickTable.length;i++){
 	document.querySelector(`#group-of-rows-${j}`).classList.toggle('displayNone');
 	}
 }
-
 let contactWindow=document.querySelector('#contactDetails');
 let showMap=document.querySelector('#viewMap');
+let showContact=document.querySelector('#showContact');
 showMap.onclick=function(){
-	contactWindow.classList.add('displayNone')
-}
+	contactWindow.classList.add('displayNone');
+	showContact.classList.remove('displayNone');
+};
+showContact.onclick=function(){
+	contactWindow.classList.remove('displayNone');
+	showContact.classList.add('displayNone');
+};
+
+let mymap = L.map('map').setView([52.232238, 21.028800], 16);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	maxZoom: 18,id: 'mapbox.streets',
+	accessToken: 'pk.eyJ1IjoiZmVyaWEyMiIsImEiOiJjazJxcXVwcmowZ20xM3BvNmVtYjg2cHA4In0.RS1U1kS6ir0yLgZZvwVBCg'
+}).addTo(mymap);
+mymap.scrollWheelZoom.disable();
+
+let markforMap = L.icon({
+	iconUrl: 'img/marker.svg',
+	iconSize:     [25, 41], 
+});
+L.marker([52.232238, 21.028896], {icon: markforMap}).addTo(mymap).bindPopup(`<img src="img/logo.png"><p>City: Warszawa</p><p>ul. Blablabla 9</p><p>000000000 numer</p>`);
