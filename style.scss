@@ -412,7 +412,7 @@ header {
   img {
     position: relative;
     display: block;
-    z-index: 999 !important;
+    z-index: 1;
     bottom: 121px;
     right: 4px;
   }
@@ -551,95 +551,150 @@ $logoSpeakers:296px;
     margin-top: 65px;
   }
 }
+.floatLeft{
+  float:left;
+}
+.floatRight{
+  float: right;;
+}
 #pastEvents {
   .bgWhite {
     margin-top: -50px;
   }
-  h3 {
-    @include font-face($fontBlack, 50px, $fontColorOfMost);
-  }
-  .pastEventsText {
-    margin-left: 14px;
-    padding-left: 70px;
-    margin-top: 60px;
-    div:last-child {
-      max-width: 61%;
-    }
+  .bgWhite::before{
+    display: none;
   }
   .container {
+    h3 {
+      @include font-face($fontBlack, 50px, $fontColorOfMost);
+    }
+    .pastEventsText {
+      margin-left: 14px;
+      padding-left: 70px;
+      margin-top: 60px;
+      div:last-child {
+        max-width: 61%;
+      }
+      p{
+        @include font-face($fontLight, 14px, $fontColorOfMost);
+      }
+    }
     padding-left: 0;
     padding-right: 0;
-    .pastEventsImg {
+    #pastEventsImg {
       margin-top: 85px;
-      // margin-left: -69px;
-
-      // position: relative;
-
-      // top: 85px;
-      // left:-70px;
-      // right: -70px;
-      // width: 100%;
       width: 100%;
-      display: inline-block;
-      div {
-        display: inline-block;
-        margin: 0 !important;
+      overflow: hidden;
+      img{
+        object-fit: cover;
       }
-      .pastEventsImgN1 {
-        // background-color: red;
-        float: left;
-        height: 416px;
+      .pastEventsImgN1,.pastEventsImgN2{height: 416px;}
+      .pastEventsImgN1{ width: 51.28%;}
+      .pastEventsImgN2 {width: 48.72%;}
+      .pastEventsImgN3,.pastEventsImgN4{height: 366px;}
+      .pastEventsImgN3 { width: 42.74%;}
+      .pastEventsImgN4 { width: 57.26%;}
+      &:after {
+        content: ""; 
+        display: block; 
+        clear: both; 
+        height: 99px;
+      }
+      #backPop {
+        display:none;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
         overflow: hidden;
-        width: 51.28%;
+        position: fixed;
+        top: 0px;
+        right: 0;
+        left: 0;
+        z-index: 100;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
       }
-      .pastEventsImgN2 {
-        // background-color: green;
-        float: right;
-        height: 416px;
-        width: 48.72%;
-        overflow: hidden;
-        // img{
-        //     width: 570px;
-        // }
+      #popUp {
+        position: relative;
+        width:  70%;
+        height: 100%;
       }
-      .pastEventsImgN3 {
-        // background-color: yellow;
-        float: left;
-        height: 366px;
-        overflow: hidden;
-        width: 42.74%;
-        // img{
-        //     // width: 500px;
-        // }
+      #bigImg{
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform:translate(0,-50%)
       }
-      .pastEventsImgN4 {
-        background-color: blue;
-        float: right;
-        height: 366px;
-        overflow: hidden;
-        width: 57.26%;
+      #inRight,#inLeft{
+        right: 0;
+        width: 50%;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        i{
+          position:absolute;
+          font-size: 4vw;
+          // display: none;
+          color: $bgBtn;
+          top:50%;
+          right: -5vw;
+        }
       }
-      img {
-        min-height: 100%;
-        max-height: 110%;
-        min-width: 100%;
+      #inLeft{
+        left: 0;
+       i{
+      left:-5vw;
+       }
       }
-      clear: both;
+      .fadeIn{
+        animation: fadeIn  0.3s 1 ease-in;
+        opacity:1 !important;
+      }
+      .fadeOut{
+        animation: fadeOut  0.3s 1 ease-in;
+         opacity:0 !important;
+      }
+      @keyframes fadeIn {
+        from {opacity: 0}
+        10% {opacity: 0.1}
+        20% {opacity: 0.2}
+        30% {opacity: 0.3}
+        40% {opacity: 0.4}
+        50% {opacity: 0.5}
+        60% {opacity: 0.6}
+        70% {opacity: 0.7}
+        80% {opacity: 0.8}
+        90% {opacity: 0.9}
+        to {opacity: 1}
+      }
+      @keyframes fadeOut{
+        0% { opacity:1}
+        10% { opacity:0.9}
+        20% { opacity:0.8}
+        30% { opacity:0.7}
+        40% { opacity:0.6}
+        50% { opacity:0.5}
+        60% { opacity:0.4}
+        70% { opacity:0.3}
+        80% { opacity:0.2}
+        90% { opacity:0.1}
+        100% { opacity:0}
+      }
     }
-    
   }
-
   button {
-    clear: both;
     margin: 0 auto;
-    margin-top: 99px;
     background-color: #373737;
     display: block;
   }
 }
 #contact {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   margin-top: 92px;
   display: flex;
   flex-direction: row;
@@ -652,7 +707,7 @@ $logoSpeakers:296px;
     width: 100%;
     position: relative;
     height: 660px;
-    z-index: -1;
+    z-index: 0;
     // pointer-events: none;
   }
   #showContact{
@@ -661,7 +716,7 @@ $logoSpeakers:296px;
     top:0;
   }
   #contactDetails {
-    z-index: 2;
+    z-index: 1;
     min-height: 530px;
     max-width: 970px;
     position: absolute;
@@ -727,6 +782,9 @@ footer {
   height: 224px;
   margin-top: -4px;
   text-align: center;
+  .container{
+    position: relative;
+  }
   .socIcons {
     margin-top: 53px;
     span {
@@ -752,11 +810,11 @@ span {
 }
 .goUp {
   position: absolute;
-  right: 162px;
-  top:76px;
+  right: 32px;
+  bottom: 33px;
   color: #212121;
   font-size: 34px;
-  z-index: 999;
+  z-index: 3;
 }
 
 @mixin media(

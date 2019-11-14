@@ -37,7 +37,6 @@ let pastEvetsImgArray=[
 	"https://cdn.pixabay.com/photo/2016/09/17/21/47/audience-1677028_960_720.jpg",
 	"https://cdn.pixabay.com/photo/2016/04/04/03/03/event-1306079_960_720.jpg",
 	"https://cdn.pixabay.com/photo/2015/09/18/11/38/audience-945449_960_720.jpg",
-	// "https://cdn.pixabay.com/photo/2015/07/30/17/24/audience-868074__740.jpg",
 	"https://cdn.pixabay.com/photo/2015/07/30/17/24/audience-868074_960_720.jpg",
 	"https://cdn.pixabay.com/photo/2016/11/29/13/20/balloons-1869790_960_720.jpg",
 	"https://cdn.pixabay.com/photo/2013/12/12/20/01/fireworks-227383_960_720.jpg",
@@ -45,23 +44,105 @@ let pastEvetsImgArray=[
 	"https://cdn.pixabay.com/photo/2016/01/19/17/18/fairground-1149626_960_720.jpg",
 	"https://cdn.pixabay.com/photo/2015/07/02/10/16/circus-828680_960_720.jpg",
 ];
-document.querySelectorAll('.pastEventsImg').forEach(function(elem){
-	genPastImg();
-})
+
+
 function genPastImg(i=1){
-	let j;
 	for(i;i<=4;i++){
-		j=Math.floor(Math.random()*(pastEvetsImgArray.length-0)+0);
-		console.log(j);
-		let img=document.createElement("div");
-		img.classList.add(`pastEventsImgN${i}`);
-		img.innerHTML=`<img src="${pastEvetsImgArray[j]}" alt="event">`;
-		document.querySelectorAll('.pastEventsImg')[0].appendChild(img);
+		let j=Math.floor(Math.random()*(pastEvetsImgArray.length-0)+0);
+		if(pastEvetsImgArray.length>0){
+			let img=document.createElement("img");
+			let a;
+			(i%2==0)? a='floatRight':a='floatLeft';
+			img.classList.add(`pastEventsImgN${i}`,'click',`${a}`);
+			img.src=`${pastEvetsImgArray[j]}`;
+			img.alt='event';
+			document.querySelector('#pastEventsImg').appendChild(img);
+			pastEvetsImgArray.splice(j, 1);
+		}
 	}
 }
+genPastImg();
+
 document.querySelector('#viewMore').onclick=function(){
-	genPastImg();
+	if(
+		pastEvetsImgArray.length>0){genPastImg();
+		callImg();
+		}
+	else{
+		window.open('https://pixabay.com/images/search/event/');
+	}	
 }
+
+let img=document.querySelectorAll('.click'),
+  backPop = document.getElementById('backPop'),
+  popUp = document.getElementById('popUp'),
+  bigImg = document.getElementById('bigImg'),
+  inRight = document.querySelector('#inRight'),
+  inLeft = document.querySelector('#inLeft'),
+  nextSrc,next;
+  callImg()
+
+
+let listener= e => {
+	console.log('listener')
+	switch (e.keyCode) {
+		case 37:navigtionImg(2,img.length-1);
+		break;
+		case 39:navigtionImg(1,0);
+		break;
+		case 27:closeBigImg();
+		break;
+	  }
+	  }
+function callImg(){
+	img.forEach.call(img, function(elem) {
+		let src = elem.getAttribute('src');
+		 console.log(src);
+		elem.onclick = function() {
+		  next = elem;
+		  console.log(next)
+		  backPop.style.display = 'flex';
+		  backPop.classList.remove('fadeOut');
+		  backPop.classList.add('fadeIn');
+		  bigImg.setAttribute('src', src);
+		  window.addEventListener("keydown", listener);
+		
+		}
+	});
+}
+	
+
+inRight.onclick = function(){ navigtionImg(1,0)}
+inLeft.onclick = function(){navigtionImg(2,img.length-1)}
+
+function navigtionImg(a,index){
+
+	(a==1)?nextElem = next.nextElementSibling:nextElem = next.previousElementSibling;
+	console.log(nextElem);
+	next=nextElem;
+	if((next==null)||next.querySelector('div')){
+		nextSrc = img[index].getAttribute('src');
+		next=img[index];
+	}
+    else nextSrc = nextElem.getAttribute('src');
+  	bigImg.setAttribute('src', nextSrc);
+  }
+
+
+backPop.onclick =function(elem){
+	if (!(elem.target.closest("#popUp"))) { closeBigImg();}
+}
+
+ function closeBigImg (elem) {
+    backPop.classList.add('fadeOut');
+    setTimeout(function() {
+      backPop.style.display = 'none'
+	}, 300);
+	window.removeEventListener("keydown", listener);
+}
+	
+
+
 let clickTable=document.querySelectorAll('table .clickable .fa');
 for(let i=0;i<clickTable.length;i++){
 	let j=i+1;

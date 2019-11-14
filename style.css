@@ -349,7 +349,7 @@ header {
   .elite img {
     position: relative;
     display: block;
-    z-index: 999 !important;
+    z-index: 1;
     bottom: 121px;
     right: 4px; }
   .elite h2 {
@@ -463,65 +463,219 @@ header {
   #sponsors button {
     margin-top: 65px; }
 
+.floatLeft {
+  float: left; }
+
+.floatRight {
+  float: right; }
+
 #pastEvents .bgWhite {
   margin-top: -50px; }
-#pastEvents h3 {
-  font-family: "Roboto Black", sans-serif;
-  font-size: 50px;
-  color: #242424;
-  line-height: 1.2; }
-#pastEvents .pastEventsText {
-  margin-left: 14px;
-  padding-left: 70px;
-  margin-top: 60px; }
-  #pastEvents .pastEventsText div:last-child {
-    max-width: 61%; }
+#pastEvents .bgWhite::before {
+  display: none; }
 #pastEvents .container {
   padding-left: 0;
   padding-right: 0; }
-  #pastEvents .container .pastEventsImg {
+  #pastEvents .container h3 {
+    font-family: "Roboto Black", sans-serif;
+    font-size: 50px;
+    color: #242424;
+    line-height: 1.2; }
+  #pastEvents .container .pastEventsText {
+    margin-left: 14px;
+    padding-left: 70px;
+    margin-top: 60px; }
+    #pastEvents .container .pastEventsText div:last-child {
+      max-width: 61%; }
+    #pastEvents .container .pastEventsText p {
+      font-family: "Roboto Light", sans-serif;
+      font-size: 14px;
+      color: #242424;
+      line-height: 1.2; }
+  #pastEvents .container #pastEventsImg {
     margin-top: 85px;
     width: 100%;
-    display: inline-block;
-    clear: both; }
-    #pastEvents .container .pastEventsImg div {
-      display: inline-block;
-      margin: 0 !important; }
-    #pastEvents .container .pastEventsImg .pastEventsImgN1 {
-      float: left;
-      height: 416px;
-      overflow: hidden;
+    overflow: hidden; }
+    #pastEvents .container #pastEventsImg img {
+      -o-object-fit: cover;
+         object-fit: cover; }
+    #pastEvents .container #pastEventsImg .pastEventsImgN1, #pastEvents .container #pastEventsImg .pastEventsImgN2 {
+      height: 416px; }
+    #pastEvents .container #pastEventsImg .pastEventsImgN1 {
       width: 51.28%; }
-    #pastEvents .container .pastEventsImg .pastEventsImgN2 {
-      float: right;
-      height: 416px;
-      width: 48.72%;
-      overflow: hidden; }
-    #pastEvents .container .pastEventsImg .pastEventsImgN3 {
-      float: left;
-      height: 366px;
-      overflow: hidden;
+    #pastEvents .container #pastEventsImg .pastEventsImgN2 {
+      width: 48.72%; }
+    #pastEvents .container #pastEventsImg .pastEventsImgN3, #pastEvents .container #pastEventsImg .pastEventsImgN4 {
+      height: 366px; }
+    #pastEvents .container #pastEventsImg .pastEventsImgN3 {
       width: 42.74%; }
-    #pastEvents .container .pastEventsImg .pastEventsImgN4 {
-      background-color: blue;
-      float: right;
-      height: 366px;
-      overflow: hidden;
+    #pastEvents .container #pastEventsImg .pastEventsImgN4 {
       width: 57.26%; }
-    #pastEvents .container .pastEventsImg img {
-      min-height: 100%;
-      max-height: 110%;
-      min-width: 100%; }
+    #pastEvents .container #pastEventsImg:after {
+      content: "";
+      display: block;
+      clear: both;
+      height: 99px; }
+    #pastEvents .container #pastEventsImg #backPop {
+      display: none;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      position: fixed;
+      top: 0px;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -ms-flex-line-pack: center;
+          align-content: center; }
+    #pastEvents .container #pastEventsImg #popUp {
+      position: relative;
+      width: 70%;
+      height: 100%; }
+    #pastEvents .container #pastEventsImg #bigImg {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%); }
+    #pastEvents .container #pastEventsImg #inRight, #pastEvents .container #pastEventsImg #inLeft {
+      right: 0;
+      width: 50%;
+      top: 0;
+      bottom: 0;
+      position: absolute; }
+      #pastEvents .container #pastEventsImg #inRight i, #pastEvents .container #pastEventsImg #inLeft i {
+        position: absolute;
+        font-size: 4vw;
+        color: #90d23d;
+        top: 50%;
+        right: -5vw; }
+    #pastEvents .container #pastEventsImg #inLeft {
+      left: 0; }
+      #pastEvents .container #pastEventsImg #inLeft i {
+        left: -5vw; }
+    #pastEvents .container #pastEventsImg .fadeIn {
+      -webkit-animation: fadeIn  0.3s 1 ease-in;
+              animation: fadeIn  0.3s 1 ease-in;
+      opacity: 1 !important; }
+    #pastEvents .container #pastEventsImg .fadeOut {
+      -webkit-animation: fadeOut  0.3s 1 ease-in;
+              animation: fadeOut  0.3s 1 ease-in;
+      opacity: 0 !important; }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  10% {
+    opacity: 0.1; }
+  20% {
+    opacity: 0.2; }
+  30% {
+    opacity: 0.3; }
+  40% {
+    opacity: 0.4; }
+  50% {
+    opacity: 0.5; }
+  60% {
+    opacity: 0.6; }
+  70% {
+    opacity: 0.7; }
+  80% {
+    opacity: 0.8; }
+  90% {
+    opacity: 0.9; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  10% {
+    opacity: 0.1; }
+  20% {
+    opacity: 0.2; }
+  30% {
+    opacity: 0.3; }
+  40% {
+    opacity: 0.4; }
+  50% {
+    opacity: 0.5; }
+  60% {
+    opacity: 0.6; }
+  70% {
+    opacity: 0.7; }
+  80% {
+    opacity: 0.8; }
+  90% {
+    opacity: 0.9; }
+  to {
+    opacity: 1; } }
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  10% {
+    opacity: 0.9; }
+  20% {
+    opacity: 0.8; }
+  30% {
+    opacity: 0.7; }
+  40% {
+    opacity: 0.6; }
+  50% {
+    opacity: 0.5; }
+  60% {
+    opacity: 0.4; }
+  70% {
+    opacity: 0.3; }
+  80% {
+    opacity: 0.2; }
+  90% {
+    opacity: 0.1; }
+  100% {
+    opacity: 0; } }
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  10% {
+    opacity: 0.9; }
+  20% {
+    opacity: 0.8; }
+  30% {
+    opacity: 0.7; }
+  40% {
+    opacity: 0.6; }
+  50% {
+    opacity: 0.5; }
+  60% {
+    opacity: 0.4; }
+  70% {
+    opacity: 0.3; }
+  80% {
+    opacity: 0.2; }
+  90% {
+    opacity: 0.1; }
+  100% {
+    opacity: 0; } }
 #pastEvents button {
-  clear: both;
   margin: 0 auto;
-  margin-top: 99px;
   background-color: #373737;
   display: block; }
 
 #contact {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   margin-top: 92px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -544,13 +698,13 @@ header {
     width: 100%;
     position: relative;
     height: 660px;
-    z-index: -1; }
+    z-index: 0; }
   #contact #showContact {
     position: absolute;
     right: 0;
     top: 0; }
   #contact #contactDetails {
-    z-index: 2;
+    z-index: 1;
     min-height: 530px;
     max-width: 970px;
     position: absolute;
@@ -630,6 +784,8 @@ footer {
   height: 224px;
   margin-top: -4px;
   text-align: center; }
+  footer .container {
+    position: relative; }
   footer .socIcons {
     margin-top: 53px; }
     footer .socIcons span {
@@ -650,11 +806,11 @@ span i:last-child {
 
 .goUp {
   position: absolute;
-  right: 162px;
-  top: 76px;
+  right: 32px;
+  bottom: 33px;
   color: #212121;
   font-size: 34px;
-  z-index: 999; }
+  z-index: 3; }
 
 @media (min-width: 1px) and (max-width: 349px) {
   #time_for_event,
