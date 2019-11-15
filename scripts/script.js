@@ -45,7 +45,6 @@ let pastEvetsImgArray=[
 	"https://cdn.pixabay.com/photo/2015/07/02/10/16/circus-828680_960_720.jpg",
 ];
 
-
 function genPastImg(i=1){
 	for(i;i<=4;i++){
 		let j=Math.floor(Math.random()*(pastEvetsImgArray.length-0)+0);
@@ -63,26 +62,16 @@ function genPastImg(i=1){
 }
 genPastImg();
 
-document.querySelector('#viewMore').onclick=function(){
-	if(
-		pastEvetsImgArray.length>0){genPastImg();
-		callImg();
-		}
-	else{
-		window.open('https://pixabay.com/images/search/event/');
-	}	
-}
+// function 
 
 let img=document.querySelectorAll('.click'),
-  backPop = document.getElementById('backPop'),
+backPop = document.getElementById('backPop'),
   popUp = document.getElementById('popUp'),
   bigImg = document.getElementById('bigImg'),
   inRight = document.querySelector('#inRight'),
   inLeft = document.querySelector('#inLeft'),
   nextSrc,next;
-  callImg()
-
-
+  
 let listener= e => {
 	console.log('listener')
 	switch (e.keyCode) {
@@ -94,54 +83,79 @@ let listener= e => {
 		break;
 	  }
 	  }
-function callImg(){
-	img.forEach.call(img, function(elem) {
-		let src = elem.getAttribute('src');
-		 console.log(src);
-		elem.onclick = function() {
-		  next = elem;
-		  console.log(next)
-		  backPop.style.display = 'flex';
-		  backPop.classList.remove('fadeOut');
-		  backPop.classList.add('fadeIn');
-		  bigImg.setAttribute('src', src);
-		  window.addEventListener("keydown", listener);
-		
-		}
-	});
-}
-	
 
-inRight.onclick = function(){ navigtionImg(1,0)}
-inLeft.onclick = function(){navigtionImg(2,img.length-1)}
+class Action {
+	constructor(elem){
+		this._elem=elem;
+		elem.onclick=this.onClick.bind(this);
+	}
+	viewMore(){
+		if(pastEvetsImgArray.length>0){
+			genPastImg();
+			// callImg();
+			}
+		else{
+			window.open('https://pixabay.com/images/search/event/');
+		}	
+	}
+	inRight(){ navigtionImg('right',0)}
+	inLeft(){navigtionImg('left',img.length-1)}
+	viewMap(){
+		document.querySelector('#contactDetails').classList.add('displayNone');
+		document.querySelector('#showContact').classList.remove('displayNone');
+	};
+	showContact(){
+		document.querySelector('#contactDetails').classList.remove('displayNone');
+		document.querySelector('#showContact').classList.add('displayNone');
+	};
+	pastEventsImg(){
+		console.log(event.target)
+		console.log(event.target.src);
+		let src=event.target.src;
+		next= event.target;
+		backPop.style.display = 'flex';
+		backPop.classList.remove('fadeOut');
+		backPop.classList.add('fadeIn');
+		window.addEventListener("keydown", listener);
+		bigImg.setAttribute('src',src);
+	}
+	backPop(elem){
+		closeBigImg()
+	}
+	onClick(event){
+		let idButton=event.target;
+		if(event.target.closest('button')==null){
+			if(idButton.closest('div').id){
+				this[event.target.closest('div').id](event)
+			}
+		}
+		else if (event.target.closest('button').id){
+			console.log('work button')
+			this[idButton.closest('button').id]()
+		}
+		else return false;
+	}
+}
+new Action(main);
 
 function navigtionImg(a,index){
-
-	(a==1)?nextElem = next.nextElementSibling:nextElem = next.previousElementSibling;
-	console.log(nextElem);
+	nextElem =(a=='right')? next.nextElementSibling:next.previousElementSibling;
+	// console.log(nextElem);
 	next=nextElem;
 	if((next==null)||next.querySelector('div')){
 		nextSrc = img[index].getAttribute('src');
 		next=img[index];
 	}
     else nextSrc = nextElem.getAttribute('src');
-  	bigImg.setAttribute('src', nextSrc);
+	bigImg.setAttribute('src', nextSrc);
   }
-
-
-backPop.onclick =function(elem){
-	if (!(elem.target.closest("#popUp"))) { closeBigImg();}
-}
-
- function closeBigImg (elem) {
+  function closeBigImg (elem) {
     backPop.classList.add('fadeOut');
     setTimeout(function() {
       backPop.style.display = 'none'
 	}, 300);
 	window.removeEventListener("keydown", listener);
 }
-	
-
 
 let clickTable=document.querySelectorAll('table .clickable .fa');
 for(let i=0;i<clickTable.length;i++){
@@ -152,20 +166,11 @@ for(let i=0;i<clickTable.length;i++){
 	}
 	document.querySelector(`#group-of-rows-${j}`).classList+=' displayNone';
 	clickTable[i].onclick=function (){
-	document.querySelector(`#group-of-rows-${j}`).classList.toggle('displayNone');
+		document.querySelector(`#group-of-rows-${j}`).classList.toggle('displayNone');
 	}
 }
-let contactWindow=document.querySelector('#contactDetails');
-let showMap=document.querySelector('#viewMap');
-let showContact=document.querySelector('#showContact');
-showMap.onclick=function(){
-	contactWindow.classList.add('displayNone');
-	showContact.classList.remove('displayNone');
-};
-showContact.onclick=function(){
-	contactWindow.classList.remove('displayNone');
-	showContact.classList.add('displayNone');
-};
+
+
 
 let mymap = L.map('map').setView([52.232238, 21.028800], 16);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -180,3 +185,4 @@ let markforMap = L.icon({
 	iconSize:     [25, 41], 
 });
 L.marker([52.232238, 21.028896], {icon: markforMap}).addTo(mymap).bindPopup(`<img src="img/logo.png"><p>City: Warszawa</p><p>ul. Blablabla 9</p><p>000000000 numer</p>`);
+
