@@ -146,6 +146,18 @@ class Action {
 	backPop(elem){
 		closeBigImg()
 	}
+	buttonElite(){
+		location.href='#contact';
+		document.querySelector('#contactDetails').classList.remove('displayNone');
+		document.querySelector('#showContact').classList.add('displayNone');
+
+	}
+	buttonSponsor(){
+		location.href='#contact';
+		document.querySelector('#contactDetails').classList.remove('displayNone');
+		document.querySelector('#showContact').classList.add('displayNone');
+
+	}
 	onClick(event){
 		let idButton=event.target;
 		if(event.target.closest('button')==null){
