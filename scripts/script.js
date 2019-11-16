@@ -1,37 +1,67 @@
 
 // timeend = new Date(2020, 0, 1, 0, 0);
 var date = new Date();
-var timeend = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+var timeend = new Date(date.getFullYear(), date.getMonth()+1, 1);
+console.log(timeend)
+function helpingTime(timeplace,content,where='afterbegin',replace){
 
+	if(replace){
+		document.querySelector(timeplace).innerHTML=content;
+	}
+	else{document.querySelector(timeplace).insertAdjacentHTML(where,content);}
 
-window.onload = () =>{ Time();};
+}
+
 window.onload = () => {
-	document.getElementById("time_today").insertAdjacentHTML("afterend", ":");
-	document.getElementById("time_thour").insertAdjacentHTML("afterend", ":");
-	document.getElementById("time_tmin").insertAdjacentHTML("afterend", ":");
+	Time();
 	document.getElementById('time_for_event').style.visibility = "visible";
+	// helpingTime('#time_today div','20');
+	// helpingTime('#time_thour div','03');
+	// helpingTime('#time_tmin div','06');
+	// helpingTime('#time_tsec div','52');
 };
-function Time() {
+function Time(timeFor) {
 	let today = new Date();
-	today = Math.floor((timeend-today)/1000);
-	let tsec=today%60; today=Math.floor(today/60); if(tsec<10)tsec='0'+tsec;
-	let tmin=today%60; today=Math.floor(today/60); if(tmin<10)tmin='0'+tmin;
-	let thour=today%24; today=Math.floor(today/24);if(thour<10)thour='0'+thour;
-	let timestr=today +":"+ thour+":"+tmin+":"+tsec;
-	// document.getElementById('time_today').innerHTML = +today + '<br><div class="time_words">days</div>';
-	// document.getElementById('time_thour').innerHTML=thour+'<br><div class="time_words">hours</div>';
-	// document.getElementById('time_tmin').innerHTML=tmin+'<br><div class="time_words">minutes</div>';
-	// document.getElementById('time_tsec').innerHTML=tsec+'<br><div class="time_words">seconds</div>';
 	
-	// contorol for timer
-	document.getElementById('time_today').innerHTML = '20<br><div class="time_words">days</div>';
-	document.getElementById('time_thour').innerHTML='03<br><div class="time_words">hours</div>';
-	document.getElementById('time_tmin').innerHTML='06<br><div class="time_words">minutes</div>';
-	document.getElementById('time_tsec').innerHTML='52<br><div class="time_words">seconds</div>';
+	today = Math.floor((timeend-today)/1000);
+	let tsec=today%60; 
+	// console.log(tsec)
+	today=Math.floor(today/60); 
+	if(tsec<10)tsec='0'+tsec;
+	let tmin=today%60; 
+	today=Math.floor(today/60); 
+	if(tmin<10)tmin='0'+tmin;
+	let thour=today%24; 
+	today=Math.floor(today/24);
+	if(thour<10)thour='0'+thour;
+	// if (timeFor=='#time_tsec'){
+	// 	helpingTime('#time_tsec div',tsec,0,1)
+	// }
+	// else if (timeFor=='#time_tmin'){
+	// 	helpingTime('#time_tmin div',tmin,0,1)
+	// 	console.log(today)
+	// 	console.log('work timer min')
 
-};
+	// }
+	// else if (timeFor=='#time_thour'){
+	// 	helpingTime('#time_thour div',thour,0,1)
+	// }
+	// else if (timeFor=='#time_today'){
+	// 	helpingTime('#time_today div',today,0,1)
+	// }
+	// else{
+		helpingTime('#time_tsec div',tsec,0,1)
+		helpingTime('#time_tmin div',tmin,0,1)
+		helpingTime('#time_thour div',thour,0,1)
+		helpingTime('#time_today div',today,0,1)
+	// }
+}
+setInterval(Time,1000,'#time_tsec');
 
-setInterval(Time,1000);
+
+
+		
+
 let pastEvetsImgArray=[
 	"https://cdn.pixabay.com/photo/2017/07/21/23/57/concert-2527495_960_720.jpg",
 	"https://cdn.pixabay.com/photo/2016/09/17/21/47/audience-1677028_960_720.jpg",
@@ -61,9 +91,7 @@ function genPastImg(i=1){
 	}
 }
 genPastImg();
-
-// function 
-
+ 
 let img=document.querySelectorAll('.click'),
 backPop = document.getElementById('backPop'),
   popUp = document.getElementById('popUp'),
@@ -73,7 +101,6 @@ backPop = document.getElementById('backPop'),
   nextSrc,next;
   
 let listener= e => {
-	console.log('listener')
 	switch (e.keyCode) {
 		case 37:navigtionImg(2,img.length-1);
 		break;
@@ -92,7 +119,6 @@ class Action {
 	viewMore(){
 		if(pastEvetsImgArray.length>0){
 			genPastImg();
-			// callImg();
 			}
 		else{
 			window.open('https://pixabay.com/images/search/event/');
@@ -109,8 +135,6 @@ class Action {
 		document.querySelector('#showContact').classList.add('displayNone');
 	};
 	pastEventsImg(){
-		console.log(event.target)
-		console.log(event.target.src);
 		let src=event.target.src;
 		next= event.target;
 		backPop.style.display = 'flex';
@@ -130,7 +154,6 @@ class Action {
 			}
 		}
 		else if (event.target.closest('button').id){
-			console.log('work button')
 			this[idButton.closest('button').id]()
 		}
 		else return false;
@@ -140,7 +163,6 @@ new Action(main);
 
 function navigtionImg(a,index){
 	nextElem =(a=='right')? next.nextElementSibling:next.previousElementSibling;
-	// console.log(nextElem);
 	next=nextElem;
 	if((next==null)||next.querySelector('div')){
 		nextSrc = img[index].getAttribute('src');
@@ -149,7 +171,7 @@ function navigtionImg(a,index){
     else nextSrc = nextElem.getAttribute('src');
 	bigImg.setAttribute('src', nextSrc);
   }
-  function closeBigImg (elem) {
+function closeBigImg (elem) {
     backPop.classList.add('fadeOut');
     setTimeout(function() {
       backPop.style.display = 'none'
