@@ -29,6 +29,9 @@ $width: calc(width-30px);
 
 body {
   @include font-face($fontLight, 14px, $fontColorOfMost);
+  @media screen and (max-width:992px){
+    font-size: 16px;
+  }
 }
 .container {
   padding-left: 70px;
@@ -97,9 +100,23 @@ form {
 }
 header {
   width: 100%;
-  max-height: 770px;
+  height: 770px;
   background: $bgDark;
   padding-top: 45px;
+  
+  .container{
+    height: 100%;
+    display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+ .timeTable{
+      flex: 1 0 auto;
+      justify-content: center;
+      align-self: center;
+      flex-wrap: nowrap;
+      width: 972px;
+ }
       .navSmall{
         display: none;
         position: relative;
@@ -128,12 +145,12 @@ header {
       border: 2px solid $bgBtn;
       border-radius: 18px;
       margin-top: 118px;
-      margin-bottom: 199px;
+      // margin-bottom: 199px;
       @include font-face($fontThin, $time_for_event, $fontColorLight);
       line-height: 1;
       text-align: center;
       text-transform: uppercase;
-      padding: 10px 8%;
+      padding: 10px 9%;
       visibility: hidden;
       height: 199px;
       position: relative;
@@ -146,19 +163,19 @@ header {
       #time_thour {
         left: 2px;
         .time_words {
-          left: 2px;
+          left: 3px;
         }
       }
       #time_tmin {
         left: 2px;
         .time_words {
-          left: 6px;
+          left: 8px;
         }
       }
       #time_tsec {
         left: 1px;
         .time_words {
-          left: 3px;
+          left: 5px;
         }
       }
     
@@ -168,12 +185,18 @@ header {
         position: relative;
       }
     }
-    
+    .icon-wrap{
+      
+      flex: 0 0 auto;
+      align-self: flex-start;
+    }
     .icon_event {
-      // padding-top: 50px;
-      // margin-bottom:15px;
       transform: rotate(355deg);
-      /*vertical-align:bottom;*/
+      transform-origin: 0;
+      position: relative;
+      bottom: -20px;
+      right: 17px;
+      display: flex;
       img {
         position: relative;
         // bottom: 0;
@@ -181,31 +204,33 @@ header {
       }
       .icon1 {
         left: -47px;
-        top: -61px;
+        // top: -61px;
         transform: rotate(366deg);
         z-index: 5;
+        bottom: -16px;
       }
       .icon2 {
         left: -98px;
-        top: -69px;
+        // top: -69px;
         transform: rotate(363deg);
         z-index: 4;
+        bottom: -8px;
       }
       .icon3 {
         left: -141px;
-        top: -78px;
+        // top: -78px;
         transform: rotate(366deg);
         z-index: 3;
       }
       .icon4 {
         left: -170px;
-        top: -76px;
+        // top: -76px;
         transform: rotate(366deg);
         z-index: 2;
       }
       .icon5 {
         left: -204px;
-        top: -74px;
+        // top: -74px;
         transform: rotate(366deg);
         z-index: 1;
       }
@@ -224,7 +249,7 @@ header {
   background: $bgDark;
   // z-index: 0;
   padding-top: 46px;
-  padding-bottom: 175px;
+  padding-bottom: 174px;
 }
 .bgWhite {
   background: $bgLight;
@@ -353,7 +378,7 @@ header {
 
     tbody {
       td {
-        padding: 0;
+        // padding: 0;
         vertical-align: inherit;
 
         &:first-child {
@@ -365,6 +390,9 @@ header {
           padding-right: 32px;
         }
       }
+      tr:nth-child(even) td{
+        padding: 20px;
+      }
     }
     thead {
       background-color: $bgTblTh;
@@ -372,7 +400,7 @@ header {
       border-radius: 15px 15px 0 0;
       @include font-face($fontBlack, 30px, $bgLight);
       th {
-        padding: 0;
+        // padding: 0;
         
         vertical-align: inherit;
         &:first-child {
@@ -394,17 +422,6 @@ header {
     display: block;
   }
 }
-// table{
-//   width: 100%;
-//   background-color: $bgTblBody;
-//   color:white;
-//   thead{
-//     background-color: $bgTblTh;
-//   }
-//   tr{
-//     background-color: $bgTblBody;
-//   }
-// }
 
 .elite {
   text-align: right;
@@ -421,15 +438,17 @@ header {
     margin-bottom: 24px;
     text-align: right;
     color: $bgLight;
+    margin-right: -6px;
   }
   p {
     margin-block-start: 0em;
     margin-block-end: 1.4em;
     padding-left: 11px;
+    padding-right: 3px;
   }
   button {
     @include font-face($font, 18px, $bgLight);
-    margin-top: 16px;
+    margin-top: 19px;
     position: relative;
     left: 3px;
   }
@@ -444,28 +463,24 @@ $logoSpeakers:296px;
     max-width: 605px;
   }
   .speakersBlock {
-  
     left: 2px;
     top: 23px;
     position: relative;
-  //  border: 1px dashed blue;
-    // width:1014px;
-    // height: 1014px;
   }
 
-  .logoSpeakersV,
-  .logoSpeakers {
+  .logoSpeakersV,.logoSpeakers {
     // border: 1px dashed red;
     margin: 21px;
     width: $logoSpeakers;
     height: $logoSpeakers;
     min-width: 255px;
     max-width: $logoSpeakers;
+    border-radius: 15px;
+  }
+  .logoSpeakersImg{
     img{
-      width: $logoSpeakers;
-      height: $logoSpeakers;
-      position: relative;
-    right: 15px;
+      width: 100%;
+      object-fit: cover;
     }
   }
   .logoSpeakersV {
@@ -474,51 +489,49 @@ $logoSpeakers:296px;
       padding: 31px 28px 32px 29px;
     }
   }
-  .nameSpeakers,
-  .textSpeakers,
-  .socIcons,
-  hr {
+  .logoSpeakersText {
     display: none;
   }
   // .logoSpeakers:hover 
-  .logoSpeakers:hover{
-    transition-duration: 0.6s;
-    .nameSpeakers,
-    .textSpeakers,
-    .socIcons,
-    hr {
-      display: block;
-      padding-left: 17px;
+  .logoSpeakers:hover {
+    transition-duration: 1.1s;
+    .logoSpeakersText {
+      padding-left: 16px;
+      padding-top: 31px;
+      grid-gap: 9px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 85px 10px 85px 34px;
     }
     .nameSpeakers {
       @include font-face($fontBlack, 45px, $bgLight);
-      padding-top: 32px;
       line-height: 0.956;
+      grid-row: 1;
     }
     .textSpeakers {
       @include font-face($fontMedium, 18px, $bgLight);
+      grid-row: 3;
+      overflow: hidden;
     }
     hr {
-      width: 67px;
+      width: 85px;
       border-top: 6px solid #ffffff;
-      margin: 11px 0;
-      position: relative;
-      left: 17px;
-      bottom: 2px;
+      margin: 0 0;
+      // position: relative;
+      // left: 17px;
+      // bottom: 2px;
+      grid-row: 2;
     }
     .socIcons {
-      margin-top: 37px;
+      // margin-top: 37px;
+      // display: static;
       font-size: 17px;
+      grid-row: 4;
     }
-    img {
+    .logoSpeakersImg{
       display: none;
     }
-    // /* background-image: url("./img/iconSpeakers.png"); */
-    // background-repeat: no-repeat;
-    // background-size: auto;
-    // /* color: #ffffff; */
     background-color: $bgBtn;
-    border-radius: 15px;
   }
   .blockEnd {
     height: 181px;
@@ -579,8 +592,8 @@ $logoSpeakers:296px;
         @include font-face($fontLight, 14px, $fontColorOfMost);
       }
     }
-    padding-left: 0;
-    padding-right: 0;
+    // padding-left: 0;
+    // padding-right: 0;
     #pastEventsImg {
       margin-top: 85px;
       width: 100%;
@@ -716,28 +729,22 @@ $logoSpeakers:296px;
     top:0;
   }
   #contactDetails {
-    z-index: 1;
+    z-index: 2;
     min-height: 530px;
     max-width: 970px;
+    width: 80%;
     position: absolute;
     background-color: $bgLight;
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-    display: flex;
-    flex-direction: row;
-    // flex-wrap: nowrap;
-    // justify-content: center;
-    // align-content: center;
+    display: grid;
+    grid-template-columns: auto 48%;
+    gap: 94px;
+    grid-template-rows: 1fr;
     align-items: center;
-    div:first-child{
-      order: 0;
-      flex: 0 1 auto;
-      align-self: center;
-    }
+   
     .adres {
       text-align: center;
       height: 336px;
+      grid-column: 1;
   
       p {    margin-top: 43px;
         margin-bottom: 28px;
@@ -746,28 +753,28 @@ $logoSpeakers:296px;
         min-width: 267px;
         @include font-face($font, 18px, rgb(69, 68, 68));
       }
+      button{
+        margin-left: 9px;
+      }
     }
-    div:nth-child(2) {
-      // top: 36px;
-      // left: 22px;
-      order: 0;
-      flex: 0 1 auto;
-      align-self: auto; 
+    form {
+
+      grid-column: 2;
+      margin-top: 8px;
       #inputKonatktEmail {
         padding: 0px 17px 0;
-        min-width: 399px;
+        // min-width: 399px;
         width: 100%;
       }
       #inputKontaktText {
         padding: 13px 20px 0;
         margin-top: 10px;
-        min-height: 250px;
-        min-width: 399px;
+        height: 250px;
+        // min-width: 399px;
         width: 100%;
       }
       button {
-        min-width: 399px;
-        margin: 7px 0px 0px 1px;
+        // min-width: 399px;
         width: 100%;
         height: 60px;
         border-radius: 5px;
@@ -818,33 +825,40 @@ span {
 }
 
 @mixin media(
-  $headerHeight: 390px,
+  $headerHeight: 500px,
+  // $pBody:20px,
   $timeMtop: 10px,
-  $timeMbottom: 90px,
-  $timeFont: 70px,
+  $timeMbottom: 0,
+  $timeFont: 100px,
+  $timeHeight:155px,
+  $timeWordHeight:16px,
+  $timeTableWidth:80%,
   $logoWidth: 170px,
   $sign-position:absolute,
   $logoSpeakerV:none,
+  $logoSpeakersWidth:295px,
   $icon_eventWidth:150px,
+  $icon_eventPositionRight:17px,
   $headIcon4:static,
   $headIcon5:none,
+  $eliteImgDisplay:static,
   $mapHeight:660px,
+  $inputKontaktTextHeight:250px,
+  $icon_eliteWidth:200px,
+  $gridColumns:1fr 1fr,
+  $gridRows:1fr,
+  $formGridColumn:2,
+  $formGridRow:1,
+  $contactPadding:25px,
+
 
 ) {
   .no-padding{
     padding: 0!important;
 }
+
   .no-margin{
-    // margin-top: 0;
-    // margin-bottom: 0;
-    // margin-left: 0;
-    // margin-right: 0;
-    // padding-top: 0;
-    // padding-bottom: 0;
-    // padding-left: 0;
-    // padding-right: 0;
     margin: 0!important;
-    
   }
   .p90 {
     p {
@@ -852,30 +866,35 @@ span {
     }
   }
   .RWD{
-    margin-top: 20px!important;
+    margin-top: 25px!important;
   }
-    .container {
+  .container {
         width: calc(100% - 30px);
         padding-left: 15px;
         padding-right: 15px;
         // margin-left: 0;
         // margin-right: 0;
-    }
+   }
    
     header {
         padding-top: 20px;
-        max-height: $headerHeight;
+        height: $headerHeight;
+        .timeTable{
+          width: $timeTableWidth;
+        }
         #time_for_event {
         margin-top: $timeMtop;
         margin-bottom: $timeMbottom;
         font-size: $timeFont;
-        height: 120px;
         line-height: 1;
+        height:  $timeHeight;
         .time_words {
-            font-size: 16px;
+            font-size:  $timeWordHeight;
         }
         }
-
+        .icon-wrap{
+          width: 100px;
+        }
         #img_logo  {
         
         width: $logoWidth;
@@ -884,7 +903,8 @@ span {
             margin-left: 20px;
         }
         .icon_event{
-            margin-left: 40px;
+           right: $icon_eventPositionRight;
+            display: flex;
             img{
                 position: relative;
                 bottom: 0;
@@ -907,7 +927,7 @@ span {
     .description {
         margin-top: 20px;
         margin-bottom: 20px;   
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
     .card_description {
       &:nth-child(2){
@@ -921,18 +941,24 @@ span {
     #eventDetails {
         table {
         font-size: 18px;
-        padding-left: 10px !important;
-        hr{
-          border-width: 3px;
-        }
         tr{
           height: 55px;
           
         }
         tbody {
-            td:first-child {
-            width: 150px;
-            padding-left: 10px;
+            td{
+              padding-left: 10px;
+              text-align: inherit;
+              &:first-child {
+                ////auto
+                width: 125px;
+                padding-left: 0;
+                text-align: center;
+              }
+              &:last-child{
+                padding-right: 10px;
+                padding-left: 0;
+              }
             }
             tr{
               .collapse td{
@@ -942,9 +968,13 @@ span {
         }
         thead{
           font-size: 25px;
+          th{
+
+            padding-left: 10px;
+          }
           th:first-child{
-             text-align: center;   
-             padding-left: 0;
+            text-align: center;
+            padding-left: 0;
            }
         }
         
@@ -955,8 +985,10 @@ span {
     }
     .elite{
       img{
-        width: 200px;
+        width: $icon_eliteWidth;
         bottom: 50px;
+        display: $eliteImgDisplay;
+        margin: 5px;
       }
       h2{
         margin-top: 10px;
@@ -969,6 +1001,10 @@ span {
       h2{
         padding-top: 0;
       }
+      p{
+        padding-left: 0; 
+        max-width: 100%;
+      }
       .speakersBlock{
         .logoSpeakersV{
             display: $logoSpeakerV;
@@ -978,6 +1014,8 @@ span {
           margin: 0px;
           min-width: 255px;
           min-height: 255px;
+          // width: $logoSpeakersWidth;
+          // height: $logoSpeakersWidth;
         }
       }
       .blockEnd{
@@ -991,14 +1029,29 @@ span {
         position: static;
           div{
             position: static;
+            margin: 5px;
           }
         }
       button{
         margin-bottom: 20px;
       }
       }
+      #pastEvents  .container{
+        .pastEventsText div:last-child {
+         max-width: 100%;
+        }
+        #pastEventsImg{
+        .pastEventsImgN1,.pastEventsImgN2,.pastEventsImgN3,.pastEventsImgN4{height: 266px;}
+        &:after {
+          height: 1px;
+        }
+      }  
+     }
     .bgGrey{
-      padding-bottom: 90px;
+      padding-bottom: 110px;
+    }
+    .bgWhite{
+      padding-top: 25px;
     }
    #contact {
       margin-top: 92px;
@@ -1006,24 +1059,24 @@ span {
         height: $mapHeight;
       }
       #contactDetails {
-        z-index: 2;
-        position: absolute;
-        background-color: $bgLight;
- 
-        div:nth-child(2) {
-          #inputKonatktEmail {
-            min-width: 200px;
-          }
+        grid-template-columns:  $gridColumns;
+        gap: 5px;
+        padding: $contactPadding;
+        grid-template-rows: $gridRows;
+        .adres{
+          grid-row: 1;
+        }
+        form {  
+          grid-column:  $formGridColumn;
+          grid-row: $formGridRow;
           #inputKontaktText {
-            min-width: 200px;
+            height: $inputKontaktTextHeight;
           }
-          button {
-            min-width: 200px;
-          }
+        
         }
       }
     }
-.goUp{
+  .goUp{
   right: 30px;
   top: 45px;
 }
@@ -1050,7 +1103,7 @@ span {
       background-color:rgba(255,255,255,0.9);
       min-width: 200px;
       box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.4);
-      z-index: 1;
+      z-index: 3;
   }
   
   .dropdown-content a {
@@ -1075,45 +1128,145 @@ span {
    }
 }
 @media (min-width: 1px) and (max-width: 349px) {
-  #time_for_event,
-  .icon_even {
-    display: none;
+  @include media(
+    $sign-position:static,
+    $inputKontaktTextHeight:120px,
+    $mapHeight:750px,
+    $headerHeight: 250px,
+    $timeFont:40px,
+    $timeWordHeight:15px,
+    $timeHeight:90px,
+    $timeTableWidth:110%,
+    $eliteImgDisplay:none,
+    $formGridColumn:1,
+    $formGridRow:2,
+    $gridRows:1fr 1fr,
+    $gridColumns:1fr,
+    $contactPadding:10px,
+  );
+  .icon-wrap{display: none;}
+  h2,h3{ text-align: center;}
+  #pastEvents  .container  #pastEventsImg{
+    .pastEventsImgN1,.pastEventsImgN2,.pastEventsImgN3,.pastEventsImgN4{
+    width:100%;
+    clear: both;}
   }
-
-  #signEvent {
-    position: relative;
-    .icon_event img {
-      visibility: hidden;
-    }
-  }
+  footer .socIcons span {
+    font-size: 23px;
+    margin: 0; 
 }
-@media (min-width: 350px) and (max-width: 576px) {
-  @include media($sign-position:static,);
+.goUp {
+  right: 0;
+  top: 0px;
+}
+
+#signEvent button {
+  margin-top: 0;
+  }
+  #contact #contactDetails {
+    width: 100%;
+  }
+ 
+#eventDetails table tbody td:first-child {
+    width: 63px;
+    padding-left: 5px;
+    text-align: left;
+}
+.container, body,html{
+  min-width: 287px;
+}
   @include nav-bar();
 }
-@media screen and (min-width: 577px) and (max-width: 768px) {
-  @include media($sign-position:static,$headIcon5:inline,$headIcon4:inline,$mapHeight:750px);
+@media (min-width: 350px) and (max-width: 575px) {
+  @include media(
+    $sign-position:static,
+    $inputKontaktTextHeight:120px,
+    $mapHeight:750px,
+    $headerHeight: 250px,
+    $timeFont:40px,
+    $timeWordHeight:15px,
+    $timeHeight:90px,
+    $timeTableWidth:100%,
+    $eliteImgDisplay:none,
+    $formGridColumn:1,
+    $formGridRow:2,
+    $gridRows:1fr 1fr,
+    $gridColumns:1fr,
+    $contactPadding:10px,
+  );
+  .icon-wrap{display: none;}
+  h2,h3{ text-align: center;}
+  #pastEvents  .container  #pastEventsImg{
+    .pastEventsImgN1,.pastEventsImgN2,.pastEventsImgN3,.pastEventsImgN4{
+    width:100%;
+    clear: both;
+  }}
+  footer .socIcons span {
+    font-size: 26px;
+    margin: 0; 
+}
+.goUp {
+  right: 0;
+  top: 0px;
+}
+#eventDetails table tbody td:first-child {
+  width: 63px;
+  padding-left: 5px;
+  text-align: left;
+}
+
+  @include nav-bar();
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  @include media(
+    $sign-position:static,
+    $mapHeight:750px,
+    $headerHeight: 300px,
+    $timeFont:60px,
+    $eliteImgDisplay:none,
+    $logoSpeakersWidth:250px,
+    // $headIcon5:static,
+    $timeHeight:110px,
+    $inputKontaktTextHeight:120px,
+    $icon_eventPositionRight:0px,
+    $formGridColumn:1,
+    $formGridRow:2,
+    $gridRows:1fr 1fr,
+    $gridColumns:1fr,
+    );
+    h2,h3{ text-align: center;}
+    .icon-wrap{display: none;}
  @include nav-bar();
  
 }
-@media screen and (min-width: 769px) and (max-width: 992px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
   @include media(
-    $headIcon4:none,
+    // $headIcon4:none,
+    $timeFont:90px,
+    $timeHeight:145px,
+    $headerHeight: 450px,
+    $icon_eliteWidth:150px,
+    $icon_eventPositionRight:0,
+
   );
 }
 // @include media-breakpoint-up(lg) {   @include media() }
-@media (min-width:993px) and (max-width:1199px){
+@media (min-width:992px) and (max-width:1199.99px){
   @include media(
     $logoSpeakerV:static,
-    $headerHeight:400px,
+    $icon_eventPositionRight:-19px,
+
   );
- 
  
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1170px;
+  }
+  #pastEvents .container{
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 .displayNone{
